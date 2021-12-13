@@ -1,5 +1,11 @@
 #include "eigen_wrapper.hpp"
 
+/**
+ * @brief Construct a new Eigen Wrapper:: Eigen Wrapper object
+ * 
+ * @param identity 
+ */
+
 EigenWrapper::EigenWrapper(Eigen::Matrix3d identity)
 {
     if (!this->setBaseMatrix(identity))
@@ -18,6 +24,14 @@ Eigen::Matrix3d EigenWrapper::getMatrix3d(void)
 {
     return this->matrix_;
 }
+
+/**
+ * @brief This function will translate the previous identity matrix on the X(0,2) and Y(1,2)
+ * 
+ * @param Translate 
+ * @return true 
+ * @return false 
+ */
 
 bool EigenWrapper::setTranslate(Eigen::Vector2d Translate)
 {
@@ -39,6 +53,14 @@ Eigen::Vector3d EigenWrapper::translate(Eigen::Vector3d point_Translate)
     return this->getTranslate() * point_Translate;
 }
 
+/**
+ * @brief This function will set the scale for width and height 
+ *        at the identity matrix at the positions (0,0) and (1,1)
+ * @param Scale 
+ * @return true 
+ * @return false 
+ */
+
 bool EigenWrapper::setScale(Eigen::Vector2d Scale)
 {
     this->scale_ = this->matrix_;
@@ -59,6 +81,14 @@ Eigen::Vector3d EigenWrapper::scale(Eigen::Vector3d point_Scale)
     return this->getScale() * point_Scale;
 }
 
+/**
+ * @brief This function will rotate the identity matrix by origin
+ * 
+ * @param angle 
+ * @return true 
+ * @return false 
+ */
+
 bool EigenWrapper::setRotate(double angle)
 {
     this->rotate_ = this->matrix_;
@@ -76,6 +106,14 @@ Eigen::Matrix3d EigenWrapper::getRotate(void)
     return this->rotate_;
 }
 
+/**
+ * @brief This function will shear the identity matrix on X direction
+ * 
+ * @param shearX 
+ * @return true 
+ * @return false 
+ */
+
 bool EigenWrapper::setShearX(double shearX)
 {
     this->shearX_ = this->matrix_;
@@ -90,6 +128,14 @@ Eigen::Matrix3d EigenWrapper::getShearX(void)
     return this->shearX_;
 }
 
+/**
+ * @brief This function will shear the identity matrix in Y direction
+ * 
+ * @param shearY 
+ * @return true 
+ * @return false 
+ */
+
 bool EigenWrapper::setShearY(double shearY)
 {
     this->shearY_ = this->matrix_;
@@ -103,6 +149,13 @@ Eigen::Matrix3d EigenWrapper::getShearY(void)
 {
     return this->shearY_;
 }
+
+/**
+ * @brief This matrix will reflect the identity matrix about origin
+ * 
+ * @return true 
+ * @return false 
+ */
 
 bool EigenWrapper::setReflectO()
 {
@@ -119,6 +172,13 @@ Eigen::Matrix3d EigenWrapper::getReflectO(void)
     return this->reflectO_;
 }
 
+/**
+ * @brief This matrix will the reflect the identity matrix about X-axis
+ * 
+ * @return true 
+ * @return false 
+ */
+
 bool EigenWrapper::setReflectX()
 {
     this->reflectX_ = this->matrix_;
@@ -133,6 +193,13 @@ Eigen::Matrix3d EigenWrapper::getReflectX(void)
 {
     return this->reflectX_;
 }
+
+/**
+ * @brief This function will rotate the identity matrix about Y-axis
+ * 
+ * @return true 
+ * @return false 
+ */
 
 bool EigenWrapper::setReflectY()
 {

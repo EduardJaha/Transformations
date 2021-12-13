@@ -40,11 +40,5 @@ int main()
     matrix.setReflectY();
     std::cout << matrix.getReflectY() << std::endl;
 
-
-
-    // _transform.setRotate(20);
-
-    // _transform.rotate_(Vector3d(1, 1, 1));
-
     return 0;
 }
