@@ -1,1 +1,0 @@
-/usr/bin/c++    -rdynamic CMakeFiles/matrix.dir/main.cc.o  -o matrix  libtesting.a 

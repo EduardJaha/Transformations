@@ -1,2 +1,0 @@
-/usr/bin/ar qc libtesting.a  CMakeFiles/testing.dir/src/eigen_wrapper.cc.o
-/usr/bin/ranlib libtesting.a
