@@ -6,12 +6,12 @@ include_directories(googletest
     ../include
     )
 
-add_executable(TEST11 
+add_executable(matrix_test 
     eigen_wrapper_test.cc ../src/eigen_wrapper.cc
     )
 
-target_link_libraries(TEST11 ${GTEST_BOTH_LIBRARIES} pthread testing)
+target_link_libraries(matrix_test ${GTEST_BOTH_LIBRARIES} pthread testing)
 
 add_test(
     NAME runUnitTests
-    COMMAND TEST11)
+    COMMAND matrix_test)
