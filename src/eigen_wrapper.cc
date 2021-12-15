@@ -89,7 +89,7 @@ Eigen::Vector3d EigenWrapper::scale(Eigen::Vector3d point_Scale)
  * @return false 
  */
 
-bool EigenWrapper::setRotate(double angle)
+bool EigenWrapper::setRotate(const double &angle)
 {
     this->rotate_ = this->matrix_;
 
@@ -101,9 +101,14 @@ bool EigenWrapper::setRotate(double angle)
     return true;
 }
 
-Eigen::Matrix3d EigenWrapper::getRotate(void)
+Eigen::Matrix3d EigenWrapper::getRotate(void) const
 {
     return this->rotate_;
+}
+
+Eigen::Vector3d EigenWrapper::rotate(Eigen::Vector3d point_Rotate)
+{
+    return this->getRotate() * point_Rotate;
 }
 
 /**
@@ -114,18 +119,23 @@ Eigen::Matrix3d EigenWrapper::getRotate(void)
  * @return false 
  */
 
-bool EigenWrapper::setShearX(double shearX)
+bool EigenWrapper::setShearX(const double &shearX)
 {
     this->shearX_ = this->matrix_;
 
-    this->shearX_(0, 1) = std::tan(shearX);
+    this->shearX_(0, 1) = std::tan((M_PI/180) * 45);
 
     return true;
 }
 
-Eigen::Matrix3d EigenWrapper::getShearX(void)
+Eigen::Matrix3d EigenWrapper::getShearX(void) const
 {
     return this->shearX_;
+}
+
+Eigen::Vector3d EigenWrapper::shearX(Eigen::Vector3d point_ShearX)
+{
+    return this->getShearX() * point_ShearX;
 }
 
 /**
@@ -136,19 +146,25 @@ Eigen::Matrix3d EigenWrapper::getShearX(void)
  * @return false 
  */
 
-bool EigenWrapper::setShearY(double shearY)
+bool EigenWrapper::setShearY(const double &shearY)
 {
     this->shearY_ = this->matrix_;
 
-    this->shearY_(1, 0) = std::tan(shearY);
+    this->shearY_(1, 0) = std::tan(shearY * M_PI / 45);
 
     return true;
 }
 
-Eigen::Matrix3d EigenWrapper::getShearY(void)
+Eigen::Matrix3d EigenWrapper::getShearY(void) const
 {
     return this->shearY_;
 }
+
+Eigen::Vector3d EigenWrapper::shearY(Eigen::Vector3d point_ShearY)
+{
+    return this->getShearY() * point_ShearY;
+}
+
 
 /**
  * @brief This matrix will reflect the identity matrix about origin
@@ -170,6 +186,11 @@ bool EigenWrapper::setReflectO()
 Eigen::Matrix3d EigenWrapper::getReflectO(void)
 {
     return this->reflectO_;
+}
+
+Eigen::Vector3d EigenWrapper::reflectO(Eigen::Vector3d point_ReflectO)
+{
+    return this->getReflectO() * point_ReflectO;
 }
 
 /**
@@ -194,6 +215,12 @@ Eigen::Matrix3d EigenWrapper::getReflectX(void)
     return this->reflectX_;
 }
 
+Eigen::Vector3d EigenWrapper::reflectX(Eigen::Vector3d point_ReflectX)
+{
+    return this->getReflectX() * point_ReflectX;
+}
+
+
 /**
  * @brief This function will rotate the identity matrix about Y-axis
  * 
@@ -214,4 +241,9 @@ bool EigenWrapper::setReflectY()
 Eigen::Matrix3d EigenWrapper::getReflectY(void)
 {
     return this->reflectY_;
+}
+
+Eigen::Vector3d EigenWrapper::reflectY(Eigen::Vector3d point_ReflectY)
+{
+    return this->getReflectY() * point_ReflectY;
 }
