@@ -1,7 +1,10 @@
+#ifndef __EIGEN_WRAPPER__
+#define __EIGEN_WRAPPER__
 
 #include <math.h>
 #include <cmath>
 #include <iostream>
+#include <Eigen/Eigen>
 #include <Eigen/Dense>
 #include <Eigen/Geometry>
 
@@ -51,3 +54,5 @@ public:
     bool setReflectY();                                     // done
     Eigen::Matrix3d getReflectY(void);
 };
+
+#endif

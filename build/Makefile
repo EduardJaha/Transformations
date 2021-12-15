@@ -124,17 +124,30 @@ matrix/fast:
 .PHONY : matrix/fast
 
 #=============================================================================
-# Target rules for targets named test
+# Target rules for targets named testing
 
 # Build rule for target.
-test: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 test
-.PHONY : test
+testing: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 testing
+.PHONY : testing
 
 # fast build rule for target.
-test/fast:
-	$(MAKE) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/build
-.PHONY : test/fast
+testing/fast:
+	$(MAKE) -f CMakeFiles/testing.dir/build.make CMakeFiles/testing.dir/build
+.PHONY : testing/fast
+
+#=============================================================================
+# Target rules for targets named TEST11
+
+# Build rule for target.
+TEST11: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 TEST11
+.PHONY : TEST11
+
+# fast build rule for target.
+TEST11/fast:
+	$(MAKE) -f test/CMakeFiles/TEST11.dir/build.make test/CMakeFiles/TEST11.dir/build
+.PHONY : TEST11/fast
 
 main.o: main.cc.o
 
@@ -169,7 +182,7 @@ src/eigen_wrapper.o: src/eigen_wrapper.cc.o
 
 # target to build an object file
 src/eigen_wrapper.cc.o:
-	$(MAKE) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/src/eigen_wrapper.cc.o
+	$(MAKE) -f CMakeFiles/testing.dir/build.make CMakeFiles/testing.dir/src/eigen_wrapper.cc.o
 .PHONY : src/eigen_wrapper.cc.o
 
 src/eigen_wrapper.i: src/eigen_wrapper.cc.i
@@ -178,7 +191,7 @@ src/eigen_wrapper.i: src/eigen_wrapper.cc.i
 
 # target to preprocess a source file
 src/eigen_wrapper.cc.i:
-	$(MAKE) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/src/eigen_wrapper.cc.i
+	$(MAKE) -f CMakeFiles/testing.dir/build.make CMakeFiles/testing.dir/src/eigen_wrapper.cc.i
 .PHONY : src/eigen_wrapper.cc.i
 
 src/eigen_wrapper.s: src/eigen_wrapper.cc.s
@@ -187,7 +200,7 @@ src/eigen_wrapper.s: src/eigen_wrapper.cc.s
 
 # target to generate assembly for a file
 src/eigen_wrapper.cc.s:
-	$(MAKE) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/src/eigen_wrapper.cc.s
+	$(MAKE) -f CMakeFiles/testing.dir/build.make CMakeFiles/testing.dir/src/eigen_wrapper.cc.s
 .PHONY : src/eigen_wrapper.cc.s
 
 # Help Target
@@ -197,9 +210,10 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... rebuild_cache"
-	@echo "... matrix"
 	@echo "... edit_cache"
-	@echo "... test"
+	@echo "... matrix"
+	@echo "... testing"
+	@echo "... TEST11"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

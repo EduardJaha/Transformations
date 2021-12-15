@@ -1,4 +1,7 @@
 /home/eduard/TrainingDay1/Transformations/build/CMakeFiles/rebuild_cache.dir
-/home/eduard/TrainingDay1/Transformations/build/CMakeFiles/matrix.dir
 /home/eduard/TrainingDay1/Transformations/build/CMakeFiles/edit_cache.dir
-/home/eduard/TrainingDay1/Transformations/build/CMakeFiles/test.dir
+/home/eduard/TrainingDay1/Transformations/build/CMakeFiles/matrix.dir
+/home/eduard/TrainingDay1/Transformations/build/CMakeFiles/testing.dir
+/home/eduard/TrainingDay1/Transformations/build/test/CMakeFiles/rebuild_cache.dir
+/home/eduard/TrainingDay1/Transformations/build/test/CMakeFiles/edit_cache.dir
+/home/eduard/TrainingDay1/Transformations/build/test/CMakeFiles/TEST11.dir

@@ -79,7 +79,7 @@ matrix_EXTERNAL_OBJECTS =
 
 matrix: CMakeFiles/matrix.dir/main.cc.o
 matrix: CMakeFiles/matrix.dir/build.make
-matrix: libtest.a
+matrix: libtesting.a
 matrix: CMakeFiles/matrix.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/eduard/TrainingDay1/Transformations/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable matrix"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/matrix.dir/link.txt --verbose=$(VERBOSE)
