@@ -68,8 +68,8 @@ TEST_F(EigenWrapperTest, setRotate)
 TEST_F(EigenWrapperTest, getRotate)
 {
     Eigen::Matrix3d _rotate;
-   _rotate <<  cos((M_PI / 180) * 45.0), sin((M_PI / 180) * 45.0), 0,
-            -sin((M_PI / 180) * 45.0), cos((M_PI / 180) * 45.0), 0,
+   _rotate <<  cos((M_PI / 180) * 90.0), sin((M_PI / 180) * 90.0), 0,
+            -sin((M_PI / 180) * 90.0), cos((M_PI / 180) * 90.0), 0,
                        0,                   0,              1;
     ASSERT_EQ(_rotate, this->base.getRotate());
 }
@@ -78,7 +78,7 @@ TEST_F(EigenWrapperTest, rotate)
 {
     Eigen::Vector3d _rotate, _result;
     _rotate << 1, 0, 1;
-    _result <<cos((M_PI / 180) * 45.0)*1, -1, 1;
+    _result << cos((M_PI / 180) * 90.0)*1, -1, 1;
 
     ASSERT_EQ(_result, this->base.rotate(_rotate));
 }
@@ -133,6 +133,7 @@ TEST_F(EigenWrapperTest, shearY)
 
     EXPECT_NE(_result, base.shearY(_shearY));
 }
+/////////////////////////////////////////////////////////////////////////////
 
 // Testing Reflect about origin
 TEST_F(EigenWrapperTest, setReflectO_Test)
@@ -140,17 +141,77 @@ TEST_F(EigenWrapperTest, setReflectO_Test)
     ASSERT_TRUE(this->base.setReflectO());
 }
 
+TEST_F(EigenWrapperTest, getReflectO)
+{
+    Eigen::Matrix3d _reflectO;
+    _reflectO << -1, 0, 0,
+                  0, -1, 0,
+                  0, 0, 1;
+
+    ASSERT_EQ(_reflectO, this->base.getReflectO());
+}
+
+TEST_F(EigenWrapperTest, reflectO)
+{
+    Eigen::Vector3d _reflectO, _result;
+    _reflectO << 1, 1, 1;
+    _result << -1, -1, 1;
+
+    ASSERT_EQ(_result, this->base.reflectO(_reflectO));
+}
+/////////////////////////////////////////////////////////////////////////////
+
 // Testing Reflect about X-axis
 TEST_F(EigenWrapperTest, setReflectX_Test)
 {
     ASSERT_TRUE(this->base.setReflectX());
 };
 
+TEST_F(EigenWrapperTest, getReflectX)
+{
+    Eigen::Matrix3d _reflectX;
+    _reflectX <<  1, 0, 0,
+                  0, -1, 0,
+                  0, 0, 1;
+
+    ASSERT_EQ(_reflectX, this->base.getReflectX());
+}
+
+TEST_F(EigenWrapperTest, reflectX)
+{
+    Eigen::Vector3d _reflectX, _result;
+    _reflectX << 1, 1, 1;
+    _result << 1, -1, 1;
+
+    ASSERT_EQ(_result, this->base.reflectX(_reflectX));
+}
+/////////////////////////////////////////////////////////////////////////////
+
 // Testing Reflect about Y-axis
 TEST_F(EigenWrapperTest, setReflectY_Test)
 {
     ASSERT_TRUE(this->base.setReflectY());
 };
+
+TEST_F(EigenWrapperTest, getReflectY)
+{
+    Eigen::Matrix3d _reflectY;
+    _reflectY << -1, 0, 0,
+                  0, 1, 0,
+                  0, 0, 1;
+
+    ASSERT_EQ(_reflectY, this->base.getReflectY());
+}
+
+TEST_F(EigenWrapperTest, reflectY)
+{
+    Eigen::Vector3d _reflectY, _result;
+    _reflectY << 1, 1, 1;
+    _result << -1, 1, 1;
+
+    ASSERT_EQ(_result, this->base.reflectY(_reflectY));
+}
+/////////////////////////////////////////////////////////////////////////////
 
 int main(int argc, char **argv)
 {
