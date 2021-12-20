@@ -1,1 +1,0 @@
-/usr/bin/c++    -rdynamic CMakeFiles/TEST11.dir/eigen_wrapper_test.cc.o CMakeFiles/TEST11.dir/home/eduard/TrainingDay1/Transformations/src/eigen_wrapper.cc.o  -o TEST11  -lpthread -ltesting 

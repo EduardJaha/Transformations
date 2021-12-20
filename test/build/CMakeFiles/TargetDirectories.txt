@@ -1,3 +1,0 @@
-/home/eduard/TrainingDay1/Transformations/test/build/CMakeFiles/rebuild_cache.dir
-/home/eduard/TrainingDay1/Transformations/test/build/CMakeFiles/edit_cache.dir
-/home/eduard/TrainingDay1/Transformations/test/build/CMakeFiles/TEST11.dir
