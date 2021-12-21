@@ -28,6 +28,15 @@ The project will be in created in the head file called **Transformations**. In t
 
 For the project to be runned and build, you need to open the terminal and create a directory **build**, and build the project in **/Transformations/build$ cmake ..** and type **cmake --build**, to build the whole project. To run the project in **main.cc** and check the transformations, after you build the project type **./Transformations_exec**. For the test to be runned you need to go in **/Transformations/build/test** and type **./Transformations_test**.
 
+### Terminal example to run main and tests
+```bash
+/Transformations$ mkdir build
+/Transformations$ cd build
+/Transformations/build$ cmake ..
+/Transformations/build$ cmake --build .
+/Transformations/build$ ./Transformations_exec
+/Transformations/build$ ./test/Transformations_test
+```
 ### *Libraries which need to be installed in terminal:*
 
 ```bash
