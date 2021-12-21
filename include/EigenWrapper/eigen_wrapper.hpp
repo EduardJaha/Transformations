@@ -1,7 +1,8 @@
 /**
  * @file eigen_wrapper.hpp
  * @author Eduard Jaha (jaha.eduard@gmail.com)
- * @brief Header files and definitions of class EigenWrapper
+ * @brief Header files and definitions of class EigenWrapper that contains the
+ * method declarations
  * @version 0.1
  * @date 2021-12-17
  * @copyright Copyright (c) 2021

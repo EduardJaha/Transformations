@@ -9,8 +9,8 @@
  * @copyright Copyright (c) 2021
  *
  */
-#ifndef TRANSFORMATIONS_EIGEN_WRAPPER_TEST__
-#define TRANSFORMATIONS_EIGEN_WRAPPER_TEST__
+#ifndef TRANSFORMATIONS_EIGEN_WRAPPER_TEST_H
+#define TRANSFORMATIONS_EIGEN_WRAPPER_TEST_H
 
 #include <gtest/gtest.h>
 
