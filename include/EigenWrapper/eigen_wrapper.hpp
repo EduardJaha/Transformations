@@ -1,25 +1,21 @@
 /**
  * @file eigen_wrapper.hpp
  * @author Eduard Jaha (jaha.eduard@gmail.com)
- * @brief Header files of the functions
+ * @brief Header files and definitions of class EigenWrapper
  * @version 0.1
  * @date 2021-12-17
  * @copyright Copyright (c) 2021
  *
  */
-#ifndef __EIGEN_WRAPPER__
-#define __EIGEN_WRAPPER__
-
-#include <math.h>
+#ifndef TRANSFORMATIONS_EIGEN_WRAPPER_H
+#define TRANSFORMATIONS_EIGEN_WRAPPER_H
 
 #include <Eigen/Dense>
 #include <Eigen/Geometry>
 #include <cmath>
-#include <iostream>
 
 /**
- * @brief Namespace for specific values that were used in the code
- *
+ * @brief Anonymous namespace for specific constants that were used in the code
  */
 namespace {
 constexpr int kHalfCircleAngle = 180;
@@ -39,263 +35,292 @@ class EigenWrapper {
   Eigen::Matrix3d matrix_;
 
   /**
-   * @brief Declaration of variable translate_
+   * @brief Declaration of variable translate_, that stores the value of
+   * translated matrix
    */
   Eigen::Matrix3d translate_;
 
   /**
-   * @brief Declaration of variable scale_
+   * @brief Declaration of variable scale_, that stores the value of scaled
+   * matrix
    */
   Eigen::Matrix3d scale_;
 
   /**
-   * @brief Declaration of variable rotate_
+   * @brief Declaration of variable rotate_, that stores the value of rotated
+   * matrix
    */
   Eigen::Matrix3d rotate_;
 
   /**
-   * @brief Declaration of variable shearY_
-   */
-  Eigen::Matrix3d shearY_;
-
-  /**
-   * @brief Declaration of variable shearX_
+   * @brief Declaration of variable shearX_, that stores the value of sheared X
+   * direction matrix
    */
   Eigen::Matrix3d shearX_;
 
   /**
-   * @brief Declaration of variable reflectO_
+   * @brief Declaration of variable shearY_, that stores the value of sheared Y
+   * direction matrix
+   */
+  Eigen::Matrix3d shearY_;
+
+  /**
+   * @brief Declaration of variable reflectO_, that stores the value of
+   * reflected O axis matrix
    */
   Eigen::Matrix3d reflectO_;
 
   /**
-   * @brief Declaration of variable reflectY_
+   * @brief Declaration of variable reflectY_, that stores the value of
+   * reflected Y axis matrix
    */
   Eigen::Matrix3d reflectY_;
 
   /**
-   * @brief Declaration of variable reflectX_
+   * @brief Declaration of variable reflectX_, that stores the value of
+   * reflected X axis matrix
    */
   Eigen::Matrix3d reflectX_;
 
  public:
   /**
-   * @brief Constructs a new Eigen Wrapper:: Eigen Wrapper object
-   * @param identity
+   * @brief Deleting 0 argument constructor
+   * @param identity, Identity matrix
    */
   EigenWrapper() = delete;
 
   /**
    * @brief Construct a new Eigen Wrapper object
    *
-   * @param identity
+   * @param identity, Identity matrix
    */
-  explicit EigenWrapper(Eigen::Matrix3d identity);
+  explicit EigenWrapper(const Eigen::Matrix3d &identity);
 
   /**
    * @brief Set the Base Matrix object
    *
-   * @param identity
-   * @return true
-   * @return false
+   * @param identity, Identity matrix
+   * @return true, if matrix is returned corrctly
+   * @return false, if matrix is returned uncorrectly
    */
-  bool setBaseMatrix(const Eigen::Matrix3d &identity);
+  bool SetBaseMatrix(const Eigen::Matrix3d &identity);
 
   /**
    * @brief Get the Matrix3d object
    *
-   * @return Eigen::Matrix3d
+   * @return Eigen::Matrix3d, a matrix 3x3 that stores the values of
+   * SetBaseMatrix and returns them at the Get function
    */
-  Eigen::Matrix3d getMatrix3d() const;
+  Eigen::Matrix3d GetMatrix3d() const;
 
   /**
    * @brief This function will translate the previous identity matrix on the
    * X(0,2) and Y(1,2)
    *
-   * @param Translate
-   * @return true
-   * @return false
+   * @param Translate is a int value that is send to the matrix to translate it
+   * @return true, if matrix is returned corrctly
+   * @return false, if matrix is returned uncorrectly
    */
-  bool setTranslate(const Eigen::Vector2d &Translate);
+  bool SetTranslate(const Eigen::Vector2d &Translate);
 
   /**
    * @brief Get the Translate object
    *
-   * @return Eigen::Matrix3d
+   * @return Eigen::Matrix3d, a matrix 3x3 that stores the values of
+   * SetTranslate and returns them at the Get function
    */
-  Eigen::Matrix3d getTranslate(void) const;
+  Eigen::Matrix3d GetTranslate(void) const;
 
   /**
    * @brief It multiplies translate_ with the point_Translate
    *
-   * @param point_Translate
-   * @return Eigen::Vector3d
+   * @param point_Translate, the point that multiplies the 3d matrix
+   * @return Eigen::Vector3d, that is the product of matrix multiplied with the
+   * point
    */
-  Eigen::Vector3d translate(Eigen::Vector3d point_Translate);
+  Eigen::Vector3d Translate(const Eigen::Vector3d &point_Translate);
 
   /**
    * @brief This function will set the scale for width and height at the
    * identity matrix at the positions (0,0) and (1,1)
-   * @param Scale
-   * @return true
-   * @return false
+   *
+   * @param Scale is a int value that is send to the matrix to scale it
+   * @return true, if matrix scale is returned corrctly
+   * @return false, if matrix scale is returned uncorrectly
    */
-  bool setScale(const Eigen::Vector2d &Scale);
+  bool SetScale(const Eigen::Vector2d &Scale);
 
   /**
    * @brief Get the Scale object
    *
-   * @return Eigen::Matrix3d
+   * @return Eigen::Matrix3d, a matrix 3x3 that stores the values of SetScale
+   * and returns them at the Get function
    */
-  Eigen::Matrix3d getScale(void) const;
+  Eigen::Matrix3d GetScale(void) const;
 
   /**
    * @brief It multiplies scale_ with the point_Scale
    *
-   * @param point_Scale
-   * @return Eigen::Vector3d
+   * @param point_Scale, the point that multiplies the 3d matrix
+   * @return Eigen::Vector3d, that is the product of matrix multiplied with the
+   * point
    */
-  Eigen::Vector3d scale(Eigen::Vector3d point_Scale);
+  Eigen::Vector3d Scale(const Eigen::Vector3d &point_Scale);
 
   /**
    * @brief This function will rotate the identity matrix by origin
    *
-   * @param degree
-   * @return true
-   * @return false
+   * @param degree is a double value that is send to the matrix to rotate it
+   * @return true, if matrix rotate is returned corrctly
+   * @return false, if matrix rotate is returned uncorrectly
    */
-  bool setRotate(const double &degree);
+  bool SetRotate(const double &degree);
 
   /**
    * @brief Get the Rotate object
    *
-   * @return Eigen::Matrix3d
+   * @return Eigen::Matrix3d, a matrix 3x3 that stores the values of SetRotate
+   * and returns them at the Get function
    */
-  Eigen::Matrix3d getRotate(void) const;
+  Eigen::Matrix3d GetRotate(void) const;
 
   /**
    * @brief It multiplies rotate_ with the point_Rotate
    *
-   * @param point_Rotate
-   * @return Eigen::Vector3d
+   * @param point_Rotate, the point that multiplies the 3d matrix
+   * @return Eigen::Vector3d, that is the product of matrix multiplied with the
+   * point
    */
-  Eigen::Vector3d rotate(Eigen::Vector3d point_Rotate);
+  Eigen::Vector3d Rotate(const Eigen::Vector3d &point_Rotate);
 
   /**
    * @brief This function will shear the identity matrix on X direction
    *
-   * @param shearX
-   * @return true
-   * @return false
+   * @param shearX is a double value that is send to the matrix to shear it in x
+   * direction
+   * @return true, if matrix shearX is returned corrctly
+   * @return false, if matrix shear Xis returned uncorrectly
    */
-  bool setShearX(const double &shearX);
+  bool SetShearX(const double &shearX);
 
   /**
    * @brief Get the Shear X object
    *
-   * @return Eigen::Matrix3d
+   * @return Eigen::Matrix3d, a matrix 3x3 that stores the values of SetShearX
+   * and returns them at the Get function
    */
-  Eigen::Matrix3d getShearX(void) const;
+  Eigen::Matrix3d GetShearX(void) const;
 
   /**
    * @brief It multiplies shearX_ with the point_ShearX
    *
-   * @param point_ShearX
-   * @return Eigen::Vector3d
+   * @param point_ShearX, the point that multiplies the 3d matrix
+   * @return Eigen::Vector3d, that is the product of matrix multiplied with the
+   * point
    */
-  Eigen::Vector3d shearX(Eigen::Vector3d point_ShearX);
+  Eigen::Vector3d ShearX(const Eigen::Vector3d &point_ShearX);
 
   /**
    * @brief This function will shear the identity matrix about Y-axis
    *
-   * @return true
-   * @return false
+   * @param shearX is a double value that is send to the matrix to shear it in x
+   * direction
+   * @return true, if matrix shearYis returned corrctly
+   * @return false, if matrix shearY is returned uncorrectly
    */
-  bool setShearY(const double &shearY);
+  bool SetShearY(const double &shearY);
 
   /**
    * @brief Get the Shear Y object
    *
-   * @return Eigen::Matrix3d
+   * @return Eigen::Matrix3d, a matrix 3x3 that stores the values of SetShearY
+   * and returns them at the Get function
    */
-  Eigen::Matrix3d getShearY(void) const;
+  Eigen::Matrix3d GetShearY(void) const;
 
   /**
    * @brief It multiplies shearY_ with the point_ShearY
    *
-   * @param point_ShearY
-   * @return Eigen::Vector3d
+   * @param point_ShearY, the point that multiplies the 3d matrix
+   * @return Eigen::Vector3d, that is the product of matrix multiplied with the
+   * point
    */
-  Eigen::Vector3d shearY(Eigen::Vector3d point_ShearY);
+  Eigen::Vector3d ShearY(const Eigen::Vector3d &point_ShearY);
 
   /**
    * @brief This function will reflect the identity matrix about origin
    *
-   * @return true
-   * @return false
+   * @return true, if matrix reflectO is returned corrctly
+   * @return false, if matrix reflect O is returned uncorrectly
    */
-  bool setReflectO();
+  bool SetReflectO();
 
   /**
    * @brief Get the Reflect O object
    *
-   * @return Eigen::Matrix3d
+   * @return Eigen::Matrix3d, a matrix 3x3 that stores the values of SetReflectO
+   * and returns them at the Get function
    */
-  Eigen::Matrix3d getReflectO(void) const;
+  Eigen::Matrix3d GetReflectO(void) const;
 
   /**
    * @brief It multiplies reflectO_ with the point_ReflectO
    *
-   * @param point_ReflectO
-   * @return Eigen::Vector3d
+   * @param point_ReflectO the point that multiplies the 3d matrix
+   * @return Eigen::Vector3d, that is the product of matrix multiplied with the
+   * point
    */
-  Eigen::Vector3d reflectO(Eigen::Vector3d point_ReflectO);
+  Eigen::Vector3d ReflectO(const Eigen::Vector3d &point_ReflectO);
 
   /**
    * @brief This function will the reflect the identity matrix about X-axis
    *
-   * @return true
-   * @return false
+   * @return true, if matrix reflectX is returned corrctly
+   * @return false, if matrix reflectX is returned uncorrectly
    */
-  bool setReflectX();
+  bool SetReflectX();
 
   /**
    * @brief Get the Reflect X object
    *
-   * @return Eigen::Matrix3d
+   * @return Eigen::Matrix3d, a matrix 3x3 that stores the values of SetReflectX
+   * and returns them at the Get function
    */
-  Eigen::Matrix3d getReflectX(void) const;
+  Eigen::Matrix3d GetReflectX(void) const;
 
   /**
    * @brief It multiplies reflectX_ with the point_ReflectX
    *
-   * @param point_ReflectX
-   * @return Eigen::Vector3d
+   * @param point_ReflectX the point that multiplies the 3d matrix
+   * @return Eigen::Vector3d, that is the product of matrix multiplied with the
+   * point
    */
-  Eigen::Vector3d reflectX(Eigen::Vector3d point_ReflectX);
+  Eigen::Vector3d ReflectX(const Eigen::Vector3d &point_ReflectX);
 
   /**
    * @brief This function will reflect the identity matrix about Y-axis
    *
-   * @return true
-   * @return false
+   * @return true, if matrix reflectY is returned corrctly
+   * @return false, if matrix reflectY is returned uncorrectly
    */
-  bool setReflectY();
+  bool SetReflectY();
 
   /**
    * @brief Get the Reflect Y object
    *
-   * @return Eigen::Matrix3d
+   * @return Eigen::Matrix3d, a matrix 3x3 that stores the values of SetReflectY
+   * and returns them at the Get function
    */
-  Eigen::Matrix3d getReflectY(void) const;
+  Eigen::Matrix3d GetReflectY(void) const;
 
   /**
    * @brief It multiplies reflectX_ with the point_ReflectX
    *
-   * @param point_ReflectY
-   * @return Eigen::Vector3d
+   * @param point_ReflectY, a point that multiplies the 3d matrix
+   * @return Eigen::Vector3d, that is the product of matrix multiplied with the
+   * point
    */
-  Eigen::Vector3d reflectY(Eigen::Vector3d point_ReflectY);
+  Eigen::Vector3d ReflectY(const Eigen::Vector3d &point_ReflectY);
 };
 
-#endif  // END __EIGEN_WRAPPER__
+#endif  // TRANSFORMATIONS_EIGEN_WRAPPER_H
