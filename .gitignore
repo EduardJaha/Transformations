@@ -1,1 +1,4 @@
 build/
+test/build/
+docs/
+doxygen_warnings.log
